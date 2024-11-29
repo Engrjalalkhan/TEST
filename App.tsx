@@ -1,17 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import Homescreen from './Src/screens/Homescreen';
-import Header from './Src/Components/Header';
-import Swapimage from './Src/Components/Swapimage';
-import Footer from './Src/Components/Footer';
+import Contact from './Src/screens/Contact';
+import Projects from './Src/screens/Projects';
+import Testimonials from './Src/screens/Testimonials';
+import Technology from './Src/screens/Technology';
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Header/>
-      <Swapimage/>
-      <Footer/>
+      <Technology/>
     </View>
   );
 };

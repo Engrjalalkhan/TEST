@@ -85,10 +85,14 @@ const ContactForm = () => {
             style={styles.picker}
           >
             <Picker.Item label="Select a purpose" value="" />
-            <Picker.Item label="General Inquiry" value="general" />
-            <Picker.Item label="Support" value="support" />
-            <Picker.Item label="Feedback" value="feedback" />
-            <Picker.Item label="Other" value="other" />
+            <Picker.Item label="Mobile Game Development" value="Mobile Game Development" />
+            <Picker.Item label="Mobile App Development" value="Mobile App Development" />
+            <Picker.Item label="Web Development" value="Web Development" />
+            <Picker.Item label="SEO" value="SEO" />
+            <Picker.Item label="Graphics" value="Graphics" />
+            <Picker.Item label="Consultation" value="Consultation" />
+            <Picker.Item label="Software Testing and QA" value="Software Testing and QA" />
+            <Picker.Item label="Custom Software Development" value="Custom Software Development" />
           </Picker>
         </View>
       </View>
