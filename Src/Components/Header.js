@@ -60,11 +60,13 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     resizeMode: 'contain',
+    marginEnd: 30,
+    marginVertical: -50,
   },
   menuButton: {
     position: 'absolute',
-    top: 150,
-    left: -110,
+    top: 100,
+    left: -100,
     backgroundColor: '#3a3a3a',
     padding: 8,
     borderRadius: 5,
@@ -72,8 +74,8 @@ const styles = StyleSheet.create({
   },
   dropdownMenu: {
     position: 'absolute',
-    top: 200,
-    left: -90,
+    top: 160,
+    left: -80,
     backgroundColor: '#fff',
     borderRadius: 5,
     elevation: 5, // Adds shadow on Android
