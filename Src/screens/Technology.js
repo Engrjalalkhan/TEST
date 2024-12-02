@@ -180,12 +180,10 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
   },
   TechnologySection: {
-    padding: 60,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    padding: 30,
+    bottom:80
   },
   TechnologyTitle: {
     fontSize: 24,

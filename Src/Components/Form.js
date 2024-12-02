@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 10,
-    width:'40%',
+    width:100,
     alignSelf:'center',
   },
   submitButtonText: {

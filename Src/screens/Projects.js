@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView, requireNativeComponent} from 'react-native';
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -23,9 +23,7 @@ const Projects = () => {
               height: 200,
               resizeMode: 'contain',
             }}
-            source={{
-              uri: 'http://trztechnologies.com/wp-content/uploads/2022/06/Screenshot-2022-06-07-at-2.29.31-PM.png',
-            }}
+            source={require('../assets/images/image.png')}
           />
           <Text style={styles.ProjectText}>Repair and Maintenance System</Text>
           <Image
@@ -34,9 +32,7 @@ const Projects = () => {
               height: 200,
               resizeMode: 'contain',
             }}
-            source={{
-              uri: 'http://trztechnologies.com/wp-content/uploads/2022/06/Screenshot-2022-06-07-at-2.52.08-AM.png',
-            }}
+            source={require('../assets/images/image1.png')}
           />
           <Text style={styles.ProjectText}>Social Media Platform</Text>
           <Image
@@ -45,9 +41,7 @@ const Projects = () => {
               height: 200,
               resizeMode: 'contain',
             }}
-            source={{
-              uri: 'http://trztechnologies.com/wp-content/uploads/2022/06/Screenshot-2022-06-07-at-3.30.38-AM.png',
-            }}
+            source={require('../assets/images/image2.png')}
           />
           <Text style={styles.ProjectText}>Mini ERP</Text>
           <Image
@@ -56,9 +50,7 @@ const Projects = () => {
               height: 200,
               resizeMode: 'contain',
             }}
-            source={{
-              uri: 'http://trztechnologies.com/wp-content/uploads/2022/06/FBPSD.png',
-            }}
+            source={require('../assets/images/image3.png')}
           />
           <Text style={styles.ProjectText}>Social Media Banners</Text>
         </View>
@@ -79,12 +71,10 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
   },
   ProjectSection: {
-    padding: 60,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    padding: 30,
+    bottom:80,
   },
   ProjectTitle: {
     fontSize: 24,

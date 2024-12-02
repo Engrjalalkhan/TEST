@@ -119,24 +119,20 @@ export default Testimonials;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffff',
   },
   scrollContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
   },
   TestimonailsSection: {
-    padding: 40,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    padding: 30,
+    bottom:80,
   },
   TestimonailsTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
-    paddingTop: 1,
+    paddingTop: 10,
   },
   profileImage: {
     width: 80,

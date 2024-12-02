@@ -92,26 +92,23 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
   },
   section: {
-    marginBottom: 20,
     alignItems:'centers',
+    bottom:50,
   },
   sectionTitle: {
     fontSize: 30,
-    color: 'Darkgray',
     paddingTop: 10,
     textAlign: 'center',
   },
   sectionText: {
     fontSize: 16,
-    padding:5,
-
+    padding:10,
   },
   readMoreButton: {
     backgroundColor: 'black',
-    height: 30,
+    height: 35,
     width: 120,
     alignSelf: 'center',
     borderRadius: 7,
@@ -120,6 +117,6 @@ const styles = StyleSheet.create({
   readMoreText: {
     color: 'white',
     alignSelf: 'center',
-    padding: 5,
+    padding: 7,
   },
 });

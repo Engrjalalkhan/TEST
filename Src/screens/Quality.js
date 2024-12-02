@@ -54,12 +54,10 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
   },
   QualitySection: {
-    padding: 60,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    padding: 30,
+    bottom:80,
   },
   QualityTitle: {
     fontSize: 24,

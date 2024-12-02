@@ -49,29 +49,25 @@ export default Contact;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffff',
   },
   scrollContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
   },
   ContactSection: {
-    padding: 60,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    padding: 30,
+    bottom:80,
   },
   ContactTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
     paddingTop: 10,
   },
   ContactText: {
     fontSize: 16,
     marginBottom: 10,
-    textAlign: 'justify',
+    textAlign: 'auto',
   },
   icon: {
     width: 50,

@@ -43,17 +43,15 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
   },
   aboutUsSection: {
-    padding: 70,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    padding: 30,
+    bottom:100
   },
   aboutUsTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 20,
     paddingTop: 10,
   },
   aboutUsText: {

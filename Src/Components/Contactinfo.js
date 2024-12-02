@@ -54,7 +54,7 @@ const ContactInformation = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 10,
     backgroundColor: '#f8f8f8',
   },
   section: {
