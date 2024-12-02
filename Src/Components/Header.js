@@ -13,13 +13,18 @@ const Header = () => {
 
   return (
     <View style={styles.headerContainer}>
-      <Image
-        source={require('../assets/images/Logo1.png')}
-        style={styles.logo}
-      />
-      <TouchableOpacity style={styles.menuButton} onPress={toggleMenu}>
-        <MaterialCommunityIcons name="menu" color={'white'} size={35} />
-      </TouchableOpacity>
+    <Image
+          source={require('../assets/images/Logo1.png')}
+          style={styles.logo}
+        />
+      {/* Navigation Bar */}
+      <View style={styles.nav}>
+        <TouchableOpacity style={styles.menuButton} onPress={toggleMenu}>
+          <MaterialCommunityIcons name="menu" color={'white'} size={35} />
+        </TouchableOpacity>
+      </View>
+
+      {/* Dropdown Menu */}
       {isMenuVisible && (
         <View style={styles.dropdownMenu}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
@@ -32,7 +37,7 @@ const Header = () => {
             <Text style={styles.menuItem}>Technology</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Quality')}>
-            <Text style={styles.menuItem}>Quality statments</Text>
+            <Text style={styles.menuItem}>Quality statements</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
             <Text style={styles.menuItem}>SEO</Text>
@@ -56,24 +61,34 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 1,
   },
+  nav: {
+    flexDirection:'row-reverse',
+    backgroundColor: '#fff',
+    padding: 5,
+    shadowColor: '#333', // Gray shadow
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 10, // Android shadow
+    width:380,
+    borderRadius:5,
+    bottom:80,
+  },
   logo: {
     width: 200,
     height: 200,
     resizeMode: 'contain',
+    alignSelf:'center',
+    bottom:50,
   },
   menuButton: {
-    position: 'absolute',
-    top: 150,
-    left: -110,
     backgroundColor: '#3a3a3a',
-    padding: 8,
     borderRadius: 5,
-    marginHorizontal: 20,
   },
   dropdownMenu: {
     position: 'absolute',
-    top: 200,
-    left: -90,
+    top: 160, // Adjusted for correct dropdown placement
+    left: 0,
     backgroundColor: '#fff',
     borderRadius: 5,
     elevation: 5, // Adds shadow on Android
@@ -82,7 +97,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 2,
     zIndex: 100,
-    width: '90%',
+    width: '91%',
   },
   menuItem: {
     padding: 10,

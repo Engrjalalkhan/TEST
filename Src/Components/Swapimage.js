@@ -61,10 +61,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop:20,
   },
   imageContainer: {
-    width: 410, // Width of each image
+    width: 430, // Width of each image
     height: 200, // Height of each image
     justifyContent: 'center',
     alignItems: 'center',
