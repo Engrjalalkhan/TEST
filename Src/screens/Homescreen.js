@@ -31,8 +31,7 @@ const Homescreen = () => {
             onPress={() => navigation.navigate('About')}
           >
             <Text style={styles.readMoreText}>
-              Read more{' >'}
-              {' >'}
+            Read more{' >>'}
             </Text>
           </TouchableOpacity>
         </View>
@@ -51,8 +50,7 @@ const Homescreen = () => {
             onPress={() => navigation.navigate('Technology')}
           >
             <Text style={styles.readMoreText}>
-              Read more{' >'}
-              {' >'}
+              Read more{' >>'}
             </Text>
           </TouchableOpacity>
         </View>
@@ -70,8 +68,7 @@ const Homescreen = () => {
             onPress={() => navigation.navigate('Quality')}
           >
             <Text style={styles.readMoreText}>
-              Read more{' >'}
-              {' >'}
+            Read more{' >>'}
             </Text>
           </TouchableOpacity>
         </View>
