@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   ContactSection: {
-    padding: 40,
+    padding: 60,
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
   },

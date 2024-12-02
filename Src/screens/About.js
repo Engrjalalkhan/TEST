@@ -1,35 +1,29 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Image,ScrollView} from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import React from 'react';
-import Header from '../Components/Header';
+import Header from '../Components/Header';  // Updated Header component
 import Footer from '../Components/Footer';
 
 const About = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {/* Header is now responsible for closing the menu when clicked outside */}
         <Header />
         <View style={styles.aboutUsSection}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Image
-              source={require('../assets//icons/paper.jpg')}
+              source={require('../assets/icons/paper.jpg')}  // Image path fix
               style={styles.icon}
             />
             <Text style={styles.aboutUsTitle}>About Us</Text>
           </View>
 
           <Text style={styles.aboutUsText}>
-            Experienced Leadership That Cultivates Creative Innovation To
-            Achieve Excellence.
+            Experienced Leadership That Cultivates Creative Innovation To Achieve Excellence.
           </Text>
           <Text style={styles.aboutUsText}>
-            TRZ Technologies is led by a team of industry professionals, each of
-            whom has spent the greater part of his or her professional life
-            immersed in the IT industry. Their collective insight and knowledge
-            has resulted in a business model that is uniquely their own. Their
-            approach is to develop and deploy technology as a means to
-            facilitate productivity, remove barriers, and enable highly skilled
-            employees to express their creativity to its fullest extent.
+            TRZ Technologies is led by a team of industry professionals, each of whom has spent the greater part of his or her professional life immersed in the IT industry. Their collective insight and knowledge has resulted in a business model that is uniquely their own. Their approach is to develop and deploy technology as a means to facilitate productivity, remove barriers, and enable highly skilled employees to express their creativity to its fullest extent.
           </Text>
         </View>
         <Footer />
@@ -52,7 +46,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   aboutUsSection: {
-    padding: 40,
+    padding: 70,
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
   },
@@ -65,7 +59,7 @@ const styles = StyleSheet.create({
   aboutUsText: {
     fontSize: 16,
     marginBottom: 10,
-    textAlign: 'justify',
+    textAlign: 'left',
   },
   icon: {
     width: 50,

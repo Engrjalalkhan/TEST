@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   TechnologySection: {
-    padding: 40,
+    padding: 60,
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
   },
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   TechnologyText: {
     fontSize: 16,
     marginBottom: 10,
-    textAlign: 'justify',
+    textAlign: 'auto',
   },
   icon: {
     width: 50,

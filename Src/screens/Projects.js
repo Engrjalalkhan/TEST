@@ -19,7 +19,7 @@ const Projects = () => {
           </View>
           <Image
             style={{
-              width: 350,
+              width: 320,
               height: 200,
               resizeMode: 'contain',
             }}
@@ -30,7 +30,7 @@ const Projects = () => {
           <Text style={styles.ProjectText}>Repair and Maintenance System</Text>
           <Image
             style={{
-              width: 350,
+              width: 320,
               height: 200,
               resizeMode: 'contain',
             }}
@@ -41,7 +41,7 @@ const Projects = () => {
           <Text style={styles.ProjectText}>Social Media Platform</Text>
           <Image
             style={{
-              width: 350,
+              width: 320,
               height: 200,
               resizeMode: 'contain',
             }}
@@ -52,7 +52,7 @@ const Projects = () => {
           <Text style={styles.ProjectText}>Mini ERP</Text>
           <Image
             style={{
-              width: 350,
+              width: 320,
               height: 200,
               resizeMode: 'contain',
             }}
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   ProjectSection: {
-    padding: 40,
+    padding: 60,
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
   },

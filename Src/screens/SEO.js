@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   SEOSection: {
-    padding: 40,
+    padding: 60,
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
   },
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   SEOText: {
     fontSize: 16,
     marginBottom: 10,
-    textAlign: 'justify',
+    textAlign: 'auto',
   },
   icon: {
     width: 50,

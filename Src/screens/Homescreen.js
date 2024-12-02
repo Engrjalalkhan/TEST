@@ -96,17 +96,18 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 20,
+    alignItems:'centers',
   },
   sectionTitle: {
     fontSize: 30,
     color: 'Darkgray',
-    paddingTop: 20,
+    paddingTop: 10,
     textAlign: 'center',
   },
   sectionText: {
     fontSize: 16,
-    padding: 10,
-    textAlign: 'justify',
+    padding:5,
+
   },
   readMoreButton: {
     backgroundColor: 'black',
@@ -114,6 +115,7 @@ const styles = StyleSheet.create({
     width: 120,
     alignSelf: 'center',
     borderRadius: 7,
+    marginTop:10,
   },
   readMoreText: {
     color: 'white',

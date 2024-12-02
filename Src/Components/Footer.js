@@ -25,37 +25,47 @@ const Footer = () => {
         <Text style={styles.text}>TRZ Technologies</Text>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('About')}>
-        <Text style={styles.txt}>{'> '} About Us</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} About Us</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
-        <Text style={styles.txt}>{'> '} Contact Us</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Contact Us
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
-        <Text style={styles.txt}>{'> '} Projects</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} Projects</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
-        <Text style={styles.txt}>{'> '} Testimonials</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Testimonials
+        </Text>
       </TouchableOpacity>
       <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
         <Text style={styles.text}>⋮⋮⋮⋮</Text>
         <Text style={styles.text}>TRZ Technologies</Text>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
-        <Text style={styles.txt}>{'> '} SEO</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} SEO</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Technology')}>
-        <Text style={styles.txt}>{'> '} Technology</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Technology
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Quality')}>
-        <Text style={styles.txt}>{'> '} Quality Statement</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Quality Statement
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
-        <Text style={styles.txt}>{'> '} Testimonials</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Testimonials
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
-        <Text style={styles.txt}>{'> '} Projects</Text>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} Projects</Text>
       </TouchableOpacity>
-      <Text style={[styles.txt, {marginTop: 10, paddingLeft: 150}]}>
+      <Text style={[styles.txt, {marginTop: 10, paddingLeft: 180}]}>
         Search for :
       </Text>
       <View style={styles.searchBox}>
@@ -67,7 +77,7 @@ const Footer = () => {
       <View style={styles.footerBottom}>
         <View style={styles.iconsContainer}>
           <TouchableOpacity
-            onPress={() => openSocialMedia('https://twitter.com')}>
+            onPress={() => openSocialMedia('https://trztechnologies.com/#')}>
             <MaterialCommunityIcons
               name="twitter"
               size={30}
@@ -76,7 +86,7 @@ const Footer = () => {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => openSocialMedia('https://facebook.com')}>
+            onPress={() => openSocialMedia('https://facebook.com/trztechnologies')}>
             <MaterialCommunityIcons
               name="facebook"
               size={30}
@@ -115,7 +125,7 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingTop: 10,
     textAlign: 'justify',
-    paddingLeft: 30,
+    left:-10
   },
   searchBox: {
     flexDirection: 'row',
