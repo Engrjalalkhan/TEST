@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -7,16 +7,17 @@ import Footer from '../Components/Footer';
 const Projects = () => {
   return (
     <View style={styles.container}>
-    <Header/>
-      <View style={styles.ProjectSection}>
-        <View style={{flexDirection: 'row'}}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Header />
+        <View style={styles.ProjectSection}>
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              source={require('../assets/icons/paper.jpg')}
+              style={styles.icon}
+            />
+            <Text style={styles.ProjectTitle}>Projects</Text>
+          </View>
           <Image
-            source={require('../assets/icons/paper.jpg')}
-            style={styles.icon}
-          />
-          <Text style={styles.ProjectTitle}>Projects</Text>
-        </View>
-        <Image
             style={{
               width: 350,
               height: 200,
@@ -60,8 +61,9 @@ const Projects = () => {
             }}
           />
           <Text style={styles.ProjectText}>Social Media Banners</Text>
-      </View>
-      <Footer/>
+        </View>
+        <Footer />
+      </ScrollView>
     </View>
   );
 };
@@ -74,6 +76,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffff',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    paddingVertical: 20,
   },
   ProjectSection: {
     padding: 40,

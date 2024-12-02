@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { StyleSheet, Text, View, Image } from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -7,8 +7,9 @@ import Footer from '../Components/Footer';
 const Quality = () => {
   return (
     <View style={styles.container}>
-    <Header/>
-      <View style={styles.QualitySection}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Header />
+        <View style={styles.QualitySection}>
           <View style={{flexDirection: 'row'}}>
             <Image
               source={require('../assets/icons/paper.jpg')}
@@ -36,7 +37,8 @@ const Quality = () => {
             satisfy our customers at minimal costs.
           </Text>
         </View>
-        <Footer/>
+        <Footer />
+      </ScrollView>
     </View>
   );
 };
@@ -44,29 +46,33 @@ const Quality = () => {
 export default Quality;
 
 const styles = StyleSheet.create({
-    container: {
+  container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffff',
   },
-    QualitySection: {
-        padding: 40,
-        borderBottomColor: 'gray',
-        borderBottomWidth: 1,
-      },
-      QualityTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        paddingTop:10,
-      },
-      QualityText: {
-        fontSize: 16,
-        marginBottom: 10,
-        textAlign: 'justify',
-      },
-      icon: {
+  scrollContainer: {
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  QualitySection: {
+    padding: 40,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
+  },
+  QualityTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    paddingTop: 10,
+  },
+  QualityText: {
+    fontSize: 16,
+    marginBottom: 10,
+    textAlign: 'justify',
+  },
+  icon: {
     width: 50,
     height: 50,
     marginRight: 8,

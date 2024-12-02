@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#f8f8f8',
     width:'100%',
-    paddingTop:100,
     alignItems:'center',
   },
   row: {

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -9,35 +9,37 @@ import ContactInformation from '../Components/Contactinfo';
 const Contact = () => {
   return (
     <View style={styles.container}>
-      <Header />
-      <View style={styles.ContactSection}>
-        <View style={{flexDirection: 'row'}}>
-          <Image
-            source={require('../assets/icons/paper.jpg')}
-            style={styles.icon}
-          />
-          <Text style={styles.ContactTitle}>Contact Us</Text>
-        </View>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Header />
+        <View style={styles.ContactSection}>
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              source={require('../assets/icons/paper.jpg')}
+              style={styles.icon}
+            />
+            <Text style={styles.ContactTitle}>Contact Us</Text>
+          </View>
 
-        <Text style={[styles.ContactText, {fontSize: 20}]}>
-          Let’s Get in Touch
-        </Text>
-        <Text style={styles.ContactText}>
-          If you are interested in speaking with TRZ Technologies about an
-          upcoming project, have a query about our services or even if you just
-          want to say Hi, there are a number of ways we can make that happen.
-          Filling out the form below would help us get the right person in touch
-          with you, or you could simply send us an email. It’s totally your
-          choice!
-        </Text>
-        <Text style={styles.ContactText}>
-          Feel free to get in touch with us and we will be back in contact with
-          you shortly.
-        </Text>
-        <ContactForm />
-        <ContactInformation />
-      </View>
-      <Footer />
+          <Text style={[styles.ContactText, {fontSize: 20}]}>
+            Let’s Get in Touch
+          </Text>
+          <Text style={styles.ContactText}>
+            If you are interested in speaking with TRZ Technologies about an
+            upcoming project, have a query about our services or even if you
+            just want to say Hi, there are a number of ways we can make that
+            happen. Filling out the form below would help us get the right
+            person in touch with you, or you could simply send us an email. It’s
+            totally your choice!
+          </Text>
+          <Text style={styles.ContactText}>
+            Feel free to get in touch with us and we will be back in contact
+            with you shortly.
+          </Text>
+          <ContactForm />
+          <ContactInformation />
+        </View>
+        <Footer />
+      </ScrollView>
     </View>
   );
 };
@@ -50,6 +52,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffff',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    paddingVertical: 20,
   },
   ContactSection: {
     padding: 40,

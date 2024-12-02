@@ -1,17 +1,24 @@
-import { Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import Header from '../Components/Header';
 import Swapimage from '../Components/Swapimage';
 import Footer from '../Components/Footer';
-// import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const Homescreen = () => {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-    <Header/>
-    <Swapimage/>
-      <View style={styles.section}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Header />
+        <Swapimage />
+        <View style={styles.section}>
           <Text style={styles.sectionTitle}>About Us</Text>
           <Text style={styles.sectionText}>
             Experienced Leadership That Cultivates Creative Innovation To
@@ -21,8 +28,8 @@ const Homescreen = () => {
           </Text>
           <TouchableOpacity
             style={styles.readMoreButton}
-            // onPress={() => navigation.navigate('About')}
-            >
+            onPress={() => navigation.navigate('About')}
+          >
             <Text style={styles.readMoreText}>
               Read more{' >'}
               {' >'}
@@ -41,8 +48,8 @@ const Homescreen = () => {
           </Text>
           <TouchableOpacity
             style={styles.readMoreButton}
-            // onPress={() => navigation.navigate('Technology')}
-            >
+            onPress={() => navigation.navigate('Technology')}
+          >
             <Text style={styles.readMoreText}>
               Read more{' >'}
               {' >'}
@@ -60,27 +67,32 @@ const Homescreen = () => {
           </Text>
           <TouchableOpacity
             style={styles.readMoreButton}
-            // onPress={() => navigation.navigate('Quality')}
-            >
+            onPress={() => navigation.navigate('Quality')}
+          >
             <Text style={styles.readMoreText}>
               Read more{' >'}
               {' >'}
             </Text>
           </TouchableOpacity>
         </View>
-        <Footer/>
+        <Footer />
+      </ScrollView>
     </View>
   );
 };
 
 export default Homescreen;
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center',
-    backgroundColor:'white',
-    width:'100%'
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    width: '100%',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    paddingVertical: 20,
   },
   section: {
     marginBottom: 20,
@@ -109,4 +121,3 @@ const styles = StyleSheet.create({
     padding: 5,
   },
 });
-

@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import Technology from './Src/screens/Technology';
-import Contact from './Src/screens/Contact';
+import MainStack from './Src/navigation/MainStack';
 
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Contact/>
+      <MainStack/>
     </View>
   );
 };

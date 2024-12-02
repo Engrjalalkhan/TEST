@@ -12,7 +12,7 @@ import Contact from '../screens/Contact';
 
 const Stack = createStackNavigator();  // Create a Stack navigator
 
-const App = () => {
+const MainStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -30,4 +30,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default MainStack;

@@ -12,7 +12,9 @@ import {
 } from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useNavigation} from '@react-navigation/native';
 const Footer = () => {
+  const navigation = useNavigation();
   const openSocialMedia = url => {
     Linking.openURL(url); // Opens the URL in the default browser
   };
@@ -22,35 +24,35 @@ const Footer = () => {
         <Text style={styles.text}>⋮⋮⋮⋮</Text>
         <Text style={styles.text}>TRZ Technologies</Text>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('About')}>
         <Text style={styles.txt}>{'> '} About Us</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
         <Text style={styles.txt}>{'> '} Contact Us</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
         <Text style={styles.txt}>{'> '} Projects</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
         <Text style={styles.txt}>{'> '} Testimonials</Text>
       </TouchableOpacity>
       <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
         <Text style={styles.text}>⋮⋮⋮⋮</Text>
         <Text style={styles.text}>TRZ Technologies</Text>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
         <Text style={styles.txt}>{'> '} SEO</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Technology')}>
         <Text style={styles.txt}>{'> '} Technology</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Quality')}>
         <Text style={styles.txt}>{'> '} Quality Statement</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
         <Text style={styles.txt}>{'> '} Testimonials</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
         <Text style={styles.txt}>{'> '} Projects</Text>
       </TouchableOpacity>
       <Text style={[styles.txt, {marginTop: 10, paddingLeft: 150}]}>
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#373A3D',
-    width: '100%',
+    width: '101%',
   },
   text: {
     color: 'white',

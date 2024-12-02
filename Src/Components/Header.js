@@ -1,9 +1,11 @@
 // src/components/Header.js
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Header = () => {
+  const navigation = useNavigation();
   const [isMenuVisible, setMenuVisible] = useState(false);
   const toggleMenu = () => {
     setMenuVisible(!isMenuVisible);
@@ -20,28 +22,28 @@ const Header = () => {
       </TouchableOpacity>
       {isMenuVisible && (
         <View style={styles.dropdownMenu}>
-          <TouchableOpacity >
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <Text style={styles.menuItem}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('About')}>
             <Text style={styles.menuItem}>About Us</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Technology')}>
             <Text style={styles.menuItem}>Technology</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Quality')}>
             <Text style={styles.menuItem}>Quality statments</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
             <Text style={styles.menuItem}>SEO</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
             <Text style={styles.menuItem}>Projects</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
             <Text style={styles.menuItem}>Testimonials</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
             <Text style={styles.menuItem}>Contact Us</Text>
           </TouchableOpacity>
         </View>

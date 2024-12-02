@@ -1,114 +1,115 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React from 'react';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 
-
 const Testimonials = () => {
   return (
     <View style={styles.container}>
-      <Header />
-      <View style={styles.TestimonailsSection}>
-        <View style={{flexDirection: 'row'}}>
-          <Image
-            source={require('../assets/icons/paper.jpg')}
-            style={styles.icon}
-          />
-          <Text style={styles.TestimonailsTitle}>Testimonials</Text>
-        </View>
-        <View style={styles.cardContainer}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.quoteSymbol}>“</Text>
-            <Text style={styles.titleText}>
-              Charles J. Neff (President – MedServ International, Inc.)
-            </Text>
-          </View>
-
-          <View style={styles.contentContainer}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Header />
+        <View style={styles.TestimonailsSection}>
+          <View style={{flexDirection: 'row'}}>
             <Image
-              source={{
-                uri: 'https://trztechnologies.com/wp-content/uploads/2016/03/Charles-150x150.jpg',
-              }} // Replace with your image URL
-              style={styles.profileImage}
+              source={require('../assets/icons/paper.jpg')}
+              style={styles.icon}
             />
-            <View style={styles.textContainer}>
-              <Text style={styles.yearText}>Year 2015:</Text>
-              <Text style={styles.bodyText}>
-                You and the team are doing an excellent job managing our fixes
-                and change requests. I cannot stress to you enough how much this
-                affects the morale of my staff as we get this ready to launch. I
-                am impressed with how you are embracing our change requests.
-                Knowing you can find a solution to a logical problem allows us
-                some additional free thinking to address our customers’ needs.
-                Being able to drill down into the captured data is a testament
-                to the database design.
+            <Text style={styles.TestimonailsTitle}>Testimonials</Text>
+          </View>
+          <View style={styles.cardContainer}>
+            <View style={styles.headerContainer}>
+              <Text style={styles.quoteSymbol}>“</Text>
+              <Text style={styles.titleText}>
+                Charles J. Neff (President – MedServ International, Inc.)
               </Text>
+            </View>
+
+            <View style={styles.contentContainer}>
+              <Image
+                source={{
+                  uri: 'https://trztechnologies.com/wp-content/uploads/2016/03/Charles-150x150.jpg',
+                }} // Replace with your image URL
+                style={styles.profileImage}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.yearText}>Year 2015:</Text>
+                <Text style={styles.bodyText}>
+                  You and the team are doing an excellent job managing our fixes
+                  and change requests. I cannot stress to you enough how much
+                  this affects the morale of my staff as we get this ready to
+                  launch. I am impressed with how you are embracing our change
+                  requests. Knowing you can find a solution to a logical problem
+                  allows us some additional free thinking to address our
+                  customers’ needs. Being able to drill down into the captured
+                  data is a testament to the database design.
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.cardContainer}>
+            <View style={styles.headerContainer}>
+              <Text style={styles.quoteSymbol}>“</Text>
+              <Text style={styles.titleText}>
+                Dr. Muhammad Arif Head of Department (Medical Oncology &
+                Hematology)
+              </Text>
+            </View>
+
+            <View style={styles.contentContainer}>
+              <Image
+                source={{
+                  uri: 'https://trztechnologies.com/wp-content/uploads/2016/03/dr555-360x278-150x150.jpg',
+                }} // Replace with your image URL
+                style={styles.profileImage}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.bodyText}>
+                  I ask TRZ Technologies to develop an application which could
+                  tract the patient history and the treatment provided to them.
+                  I was amazed to see the application developed without much of
+                  my interaction. The team worked dedicated and provided me the
+                  application as per the decided schedule. The application is
+                  fulfilling my current needs and I am quite satisfied with the
+                  output. I would recommend this company as they are good both
+                  in development and their customer service is outstanding.
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.cardContainer}>
+            <View style={styles.headerContainer}>
+              <Text style={styles.quoteSymbol}>“</Text>
+              <Text style={styles.titleText}>
+                Charles J. Neff (Vice President – MedServ International, Inc.)
+              </Text>
+            </View>
+
+            <View style={styles.contentContainer}>
+              <Image
+                source={{
+                  uri: 'https://trztechnologies.com/wp-content/uploads/2016/03/CharlesNeff-150x150.png',
+                }} // Replace with your image URL
+                style={styles.profileImage}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.yearText}>Year 2014:</Text>
+                <Text style={styles.bodyText}>
+                  Having worked with the companies principles several years ago
+                  I decided to come back to them for a new mission critical
+                  vertical integration project. The professionalism and
+                  attention to detail has resulted in TRZ Technologies meeting
+                  of all project milestones on time with very high quality
+                  deliverable. The team takes feedback seriously and works with
+                  the client to assure complete satisfaction. TRZ Technologies
+                  is highly recommended for your programming needs.
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-        <View style={styles.cardContainer}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.quoteSymbol}>“</Text>
-            <Text style={styles.titleText}>
-              Dr. Muhammad Arif Head of Department (Medical Oncology &
-              Hematology)
-            </Text>
-          </View>
-
-          <View style={styles.contentContainer}>
-            <Image
-              source={{
-                uri: 'https://trztechnologies.com/wp-content/uploads/2016/03/dr555-360x278-150x150.jpg',
-              }} // Replace with your image URL
-              style={styles.profileImage}
-            />
-            <View style={styles.textContainer}>
-              <Text style={styles.bodyText}>
-                I ask TRZ Technologies to develop an application which could
-                tract the patient history and the treatment provided to them. I
-                was amazed to see the application developed without much of my
-                interaction. The team worked dedicated and provided me the
-                application as per the decided schedule. The application is
-                fulfilling my current needs and I am quite satisfied with the
-                output. I would recommend this company as they are good both in
-                development and their customer service is outstanding.
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.cardContainer}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.quoteSymbol}>“</Text>
-            <Text style={styles.titleText}>
-              Charles J. Neff (Vice President – MedServ International, Inc.)
-            </Text>
-          </View>
-
-          <View style={styles.contentContainer}>
-            <Image
-              source={{
-                uri: 'https://trztechnologies.com/wp-content/uploads/2016/03/CharlesNeff-150x150.png',
-              }} // Replace with your image URL
-              style={styles.profileImage}
-            />
-            <View style={styles.textContainer}>
-              <Text style={styles.yearText}>Year 2014:</Text>
-              <Text style={styles.bodyText}>
-                Having worked with the companies principles several years ago I
-                decided to come back to them for a new mission critical vertical
-                integration project. The professionalism and attention to detail
-                has resulted in TRZ Technologies meeting of all project
-                milestones on time with very high quality deliverable. The team
-                takes feedback seriously and works with the client to assure
-                complete satisfaction. TRZ Technologies is highly recommended
-                for your programming needs.
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-      <Footer />
+        <Footer />
+      </ScrollView>
     </View>
   );
 };
@@ -121,6 +122,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffff',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    paddingVertical: 20,
   },
   TestimonailsSection: {
     padding: 40,
