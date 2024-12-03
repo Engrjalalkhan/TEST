@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   StyleSheet,
   Text,
@@ -10,7 +11,7 @@ import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import WebView from 'react-native-webview';
-import {contentData} from './content'; // Import content data
+import {contentData} from './content';
 
 const Footer = () => {
   const navigation = useNavigation();
@@ -42,7 +43,7 @@ const Footer = () => {
 
   // Function to highlight matched text
   const highlightText = (text) => {
-    if (!searchQuery) return <Text>{text}</Text>;
+    if (!searchQuery) {return <Text>{text}</Text>;}
     const parts = text.split(new RegExp(`(${searchQuery})`, 'gi')); // Split text by search query
     return parts.map((part, index) =>
       part.toLowerCase() === searchQuery.toLowerCase() ? (
@@ -280,6 +281,7 @@ const styles = StyleSheet.create({
   filteredItemDescription: {
     fontSize: 16,
     color: 'black',
+    padding:10,
   },
   highlightedText: {
     backgroundColor: 'yellow',
