@@ -1,5 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
-
 import {
   StyleSheet,
   Text,
@@ -12,12 +10,52 @@ import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import WebView from 'react-native-webview';
+import {contentData} from './content'; // Import content data
 
 const Footer = () => {
   const navigation = useNavigation();
   const [showWebView, setShowWebView] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(''); // Search query state
+  const [filteredData, setFilteredData] = useState(null); // State to hold filtered data
 
-  const openSocialMedia = url => {
+  // Filter content based on search query
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    if (query) {
+      // Ensure contentData is defined before attempting to filter
+      if (contentData && Array.isArray(contentData)) {
+        const filtered = contentData.filter(item =>
+          item.description.some(paragraph =>
+            paragraph.toLowerCase().includes(query.toLowerCase())
+          ) ||
+          item.title.toLowerCase().includes(query.toLowerCase())
+        );
+        setFilteredData(filtered.length > 0 ? filtered : null);
+      } else {
+        console.error('contentData is undefined or not an array');
+        setFilteredData(null);
+      }
+    } else {
+      setFilteredData(null); // Clear results if search query is empty
+    }
+  };
+
+  // Function to highlight matched text
+  const highlightText = (text) => {
+    if (!searchQuery) return <Text>{text}</Text>;
+    const parts = text.split(new RegExp(`(${searchQuery})`, 'gi')); // Split text by search query
+    return parts.map((part, index) =>
+      part.toLowerCase() === searchQuery.toLowerCase() ? (
+        <Text key={index} style={styles.highlightedText}>
+          {part}
+        </Text>
+      ) : (
+        <Text key={index}>{part}</Text>
+      ),
+    );
+  };
+
+  const openSocialMedia = (url) => {
     Linking.openURL(url); // Opens the URL in the default browser
   };
 
@@ -35,10 +73,30 @@ const Footer = () => {
         />
       ) : (
         <>
+          {/* Display filtered data only when search is done */}
+          {filteredData && filteredData.length > 0 && (
+            <View style={styles.filteredContent}>
+              {filteredData.map((item, index) => (
+                <View key={index} style={styles.filteredItem}>
+                  <Text style={styles.filteredItemTitle}>
+                    {highlightText(item.title)} {/* Highlight the title */}
+                  </Text>
+                  {/* Map over each paragraph in the description and highlight matched text */}
+                  {item.description.map((para, paraIndex) => (
+                    <Text key={paraIndex} style={styles.filteredItemDescription}>
+                      {highlightText(para)} {/* Highlight the description */}
+                    </Text>
+                  ))}
+                </View>
+              ))}
+            </View>
+          )}
+
           <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
             <Text style={styles.text}>⋮⋮⋮⋮</Text>
             <Text style={styles.text}>TRZ Technologies</Text>
           </View>
+          {/* Navigation buttons */}
           <TouchableOpacity onPress={() => navigation.navigate('About')}>
             <Text style={[styles.txt, {textAlign: 'center'}]}>
               {'> '} About Us
@@ -54,8 +112,7 @@ const Footer = () => {
               {'> '} Projects
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Testimonials')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
             <Text style={[styles.txt, {textAlign: 'center'}]}>
               {'> '} Testimonials
             </Text>
@@ -65,9 +122,7 @@ const Footer = () => {
             <Text style={styles.text}>TRZ Technologies</Text>
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>
-              {'> '} SEO
-            </Text>
+            <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} SEO</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Technology')}>
             <Text style={[styles.txt, {textAlign: 'center'}]}>
@@ -79,8 +134,7 @@ const Footer = () => {
               {'> '} Quality Statement
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Testimonials')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
             <Text style={[styles.txt, {textAlign: 'center'}]}>
               {'> '} Testimonials
             </Text>
@@ -90,15 +144,23 @@ const Footer = () => {
               {'> '} Projects
             </Text>
           </TouchableOpacity>
+
+          {/* Search Box */}
           <Text style={[styles.txt, {marginTop: 10, paddingLeft: 180}]}>
             Search for :
           </Text>
           <View style={styles.searchBox}>
-            <TextInput placeholder="Enter keywords..." style={styles.input} />
+            <TextInput
+              placeholder="Enter keywords..."
+              style={styles.input}
+              value={searchQuery}
+              onChangeText={handleSearch} // Call handleSearch on text change
+            />
             <TouchableOpacity style={styles.searchButton}>
               <Text style={styles.searchButtonText}>Search</Text>
             </TouchableOpacity>
           </View>
+
           <View style={styles.footerBottom}>
             <View style={styles.iconsContainer}>
               <TouchableOpacity
@@ -201,5 +263,26 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginHorizontal: 15,
+  },
+  filteredContent: {
+    padding: 20,
+    bottom: 50,
+    backgroundColor: 'white',
+  },
+  filteredItem: {
+    marginBottom: 10,
+  },
+  filteredItemTitle: {
+    fontSize: 24,
+    color: 'black',
+    fontWeight: 'bold',
+  },
+  filteredItemDescription: {
+    fontSize: 16,
+    color: 'black',
+  },
+  highlightedText: {
+    backgroundColor: 'yellow',
+    fontWeight: 'bold',
   },
 });

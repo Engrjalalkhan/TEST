@@ -33,9 +33,9 @@ const Swapimage = () => {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(_, index) => index.toString()}
+        keyExtractor={( index) => index.toString()}
         renderItem={({item}) => (
-          <View style={styles.imageContainer}>
+          <View style={[styles.imageContainer]}>
             <Image source={{uri: item}} style={styles.image} />
           </View>
         )}
