@@ -20,30 +20,26 @@ const Footer = () => {
   const [filteredData, setFilteredData] = useState(null); // State to hold filtered data
 
   // Filter content based on search query
-  const handleSearch = (query) => {
+  const handleSearch = query => {
     setSearchQuery(query);
     if (query) {
-      // Ensure contentData is defined before attempting to filter
-      if (contentData && Array.isArray(contentData)) {
-        const filtered = contentData.filter(item =>
-          item.description.some(paragraph =>
-            paragraph.toLowerCase().includes(query.toLowerCase())
-          ) ||
-          item.title.toLowerCase().includes(query.toLowerCase())
-        );
-        setFilteredData(filtered.length > 0 ? filtered : null);
-      } else {
-        console.error('contentData is undefined or not an array');
-        setFilteredData(null);
-      }
+      const filtered = contentData.filter(
+        item =>
+          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.description.some(para =>
+            para.toLowerCase().includes(query.toLowerCase()),
+          ),
+      );
+      setFilteredData(filtered.length > 0 ? filtered : null);
     } else {
-      setFilteredData(null); // Clear results if search query is empty
+      setFilteredData(null);
     }
   };
-
   // Function to highlight matched text
-  const highlightText = (text) => {
-    if (!searchQuery) {return <Text>{text}</Text>;}
+  const highlightText = text => {
+    if (!searchQuery) {
+      return <Text>{text}</Text>;
+    }
     const parts = text.split(new RegExp(`(${searchQuery})`, 'gi')); // Split text by search query
     return parts.map((part, index) =>
       part.toLowerCase() === searchQuery.toLowerCase() ? (
@@ -56,7 +52,7 @@ const Footer = () => {
     );
   };
 
-  const openSocialMedia = (url) => {
+  const openSocialMedia = url => {
     Linking.openURL(url); // Opens the URL in the default browser
   };
 
@@ -80,12 +76,13 @@ const Footer = () => {
               {filteredData.map((item, index) => (
                 <View key={index} style={styles.filteredItem}>
                   <Text style={styles.filteredItemTitle}>
-                    {highlightText(item.title)} {/* Highlight the title */}
+                    {highlightText(item.title)}
                   </Text>
-                  {/* Map over each paragraph in the description and highlight matched text */}
                   {item.description.map((para, paraIndex) => (
-                    <Text key={paraIndex} style={styles.filteredItemDescription}>
-                      {highlightText(para)} {/* Highlight the description */}
+                    <Text
+                      key={paraIndex}
+                      style={styles.filteredItemDescription}>
+                      {highlightText(para)}
                     </Text>
                   ))}
                 </View>
@@ -281,7 +278,7 @@ const styles = StyleSheet.create({
   filteredItemDescription: {
     fontSize: 16,
     color: 'black',
-    padding:10,
+    padding: 10,
   },
   highlightedText: {
     backgroundColor: 'yellow',
