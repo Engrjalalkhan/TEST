@@ -19,21 +19,22 @@ const Header = () => {
     setMenuVisible(!isMenuVisible);
   };
 
-  const closeMenu = () => {
-    if (isMenuVisible) {
-      setMenuVisible(false);
-    }
+  const closeMenuAndNavigate = (screen) => {
+    // Close the modal immediately
+    setMenuVisible(false);
+
+    // Navigate to the desired screen
+    navigation.navigate(screen);
   };
 
   return (
     <>
       {/* Header Section */}
       <Image
-          source={require('../assets/images/Logo1.png')}
-          style={styles.logo}
-        />
+        source={require('../assets/images/Logo1.png')}
+        style={styles.logo}
+      />
       <View style={styles.headerContainer}>
-
         <View style={styles.nav}>
           <TouchableOpacity
             style={styles.menuButton}
@@ -49,41 +50,33 @@ const Header = () => {
         visible={isMenuVisible}
         transparent={true}
         animationType="fade"
-        onRequestClose={closeMenu}
+        onRequestClose={() => setMenuVisible(false)}
       >
-        <TouchableWithoutFeedback onPress={closeMenu}>
+        <TouchableWithoutFeedback onPress={() => setMenuVisible(false)}>
           <View style={styles.overlay}>
             <View style={styles.dropdownMenu}>
-              <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+              <TouchableOpacity onPress={() => closeMenuAndNavigate('Home')}>
                 <Text style={styles.menuItem}>Home</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('About')}>
+              <TouchableOpacity onPress={() => closeMenuAndNavigate('About')}>
                 <Text style={styles.menuItem}>About Us</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Technology')}
-              >
+              <TouchableOpacity onPress={() => closeMenuAndNavigate('Technology')}>
                 <Text style={styles.menuItem}>Technology</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Quality')}
-              >
+              <TouchableOpacity onPress={() => closeMenuAndNavigate('Quality')}>
                 <Text style={styles.menuItem}>Quality statements</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
+              <TouchableOpacity onPress={() => closeMenuAndNavigate('SEO')}>
                 <Text style={styles.menuItem}>SEO</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Projects')}
-              >
+              <TouchableOpacity onPress={() => closeMenuAndNavigate('Projects')}>
                 <Text style={styles.menuItem}>Projects</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Testimonials')}
-              >
+              <TouchableOpacity onPress={() => closeMenuAndNavigate('Testimonials')}>
                 <Text style={styles.menuItem}>Testimonials</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
+              <TouchableOpacity onPress={() => closeMenuAndNavigate('Contact')}>
                 <Text style={styles.menuItem}>Contact Us</Text>
               </TouchableOpacity>
             </View>
@@ -99,21 +92,21 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     resizeMode: 'contain',
-    bottom:50,
+    bottom: 50,
   },
   nav: {
-    flexDirection:'row-reverse',
+    flexDirection: 'row-reverse',
     backgroundColor: '#fff',
     padding: 5,
     shadowColor: '#333', // Gray shadow
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 10, // Android shadow
-    width:370,
-    borderRadius:5,
-    marginBottom:20,
-    bottom:80,
+    width: 370,
+    borderRadius: 5,
+    marginBottom: 20,
+    bottom: 80,
   },
   menuButton: {
     backgroundColor: '#3a3a3a',
