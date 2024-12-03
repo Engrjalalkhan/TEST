@@ -147,7 +147,7 @@ const Footer = () => {
           </TouchableOpacity>
 
           {/* Search Box */}
-          <Text style={[styles.txt, {marginTop: 10, paddingLeft: 180}]}>
+          <Text style={[styles.txt, {marginTop: 10, paddingLeft: 160}]}>
             Search for :
           </Text>
           <View style={styles.searchBox}>

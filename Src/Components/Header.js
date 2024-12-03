@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 10, // Android shadow
-    width:380,
+    width:370,
     borderRadius:5,
     marginBottom:20,
     bottom:80,
