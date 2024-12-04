@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   aboutUsSection: {
     padding: 30,
-    bottom: 100,
+    // bottom: 100,
   },
   aboutUsTitle: {
     fontSize: 24,

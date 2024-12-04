@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
   },
   SEOSection: {
     padding: 30,
-    bottom: 80,
   },
   SEOTitle: {
     fontSize: 24,
@@ -116,7 +115,6 @@ const styles = StyleSheet.create({
   filteredContent: {
     marginBottom: 20,
     padding: 30,
-    bottom: 70,
   },
   filterTitle: {
     fontSize: 20,

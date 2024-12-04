@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
   },
   section: {
     alignItems: 'centers',
-    bottom: 50,
   },
   sectionTitle: {
     fontSize: 30,
@@ -131,7 +130,6 @@ const styles = StyleSheet.create({
   filteredContent: {
     marginBottom: 20,
     padding: 30,
-    bottom: 70,
   },
   filterTitle: {
     fontSize: 20,
