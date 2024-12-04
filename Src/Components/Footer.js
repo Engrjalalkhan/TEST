@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/native';
 import {useSearch} from './SearchContext'; // Import the useSearch hook
 import {contentData} from './content';
@@ -12,23 +11,22 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import WebView from 'react-native-webview';
 
 const Footer = () => {
   const navigation = useNavigation();
   const {searchQuery, setSearchQuery, setFilteredData} = useSearch();
-  const [showWebView, setShowWebView] = useState(false);
-  const [webViewUrl, setWebViewUrl] = useState('');
+  const [tempQuery, setTempQuery] = useState(''); // Hold input value temporarily
 
-  // Filter content based on search query
-  const handleSearch = query => {
-    setSearchQuery(query);
-    if (query) {
+  // Function to handle filtering when button is clicked
+  // Function to handle filtering when button is clicked
+  const handleSearch = () => {
+    setSearchQuery(tempQuery);
+    if (tempQuery) {
       const filtered = contentData.filter(
         item =>
-          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.title.toLowerCase().includes(tempQuery.toLowerCase()) ||
           item.description.some(para =>
-            para.toLowerCase().includes(query.toLowerCase()),
+            para.toLowerCase().includes(tempQuery.toLowerCase()),
           ),
       );
       setFilteredData(filtered.length > 0 ? filtered : null);
@@ -37,151 +35,119 @@ const Footer = () => {
     }
   };
 
-  // Function to highlight matched text
-  const highlightText = text => {
-    if (!searchQuery) {
-      return <Text>{text}</Text>;
-    }
-    const parts = text.split(new RegExp(`(${searchQuery})`, 'gi'));
-    return parts.map((part, index) =>
-      part.toLowerCase() === searchQuery.toLowerCase() ? (
-        <Text key={index} style={styles.highlightedText}>
-          {part}
-        </Text>
-      ) : (
-        <Text key={index}>{part}</Text>
-      ),
-    );
+  const clearSearch = () => {
+    setTempQuery('');
+    setSearchQuery('');
+    setFilteredData(null);
   };
 
   const openSocialMedia = url => {
     Linking.openURL(url);
   };
-
   // Function to handle clicking on the copyright text
-  const handleCopyrightClick = () => {
-    setWebViewUrl('https://www.trztechnologies.com'); // Set the URL you want to open
-    setShowWebView(true); // Show the WebView
-  };
-
-  const closeWebView = () => {
-    setShowWebView(false); // Hide the WebView
+  const handlclickcopyright = () => {
+    navigation.navigate('Home'); // Navigate to a specific screen
   };
 
   return (
     <View style={styles.container}>
-      {showWebView && (
-        <View style={{flex: 1}}>
-          <WebView
-            source={{uri: webViewUrl}}
-            style={{flex: 1}}
-            onNavigationStateChange={navState => {
-              if (!navState.canGoBack) {
-                closeWebView(); // Close the WebView if the back button is pressed at the root URL
-              }
-            }}
+      <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
+        <Text style={styles.text}>⋮⋮⋮⋮</Text>
+        <Text style={styles.text}>TRZ Technologies</Text>
+      </View>
+      {/* Navigation buttons */}
+      <TouchableOpacity onPress={() => navigation.navigate('About')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} About Us</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Contact Us
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} Projects</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Testimonials
+        </Text>
+      </TouchableOpacity>
+      <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
+        <Text style={styles.text}>⋮⋮⋮⋮</Text>
+        <Text style={styles.text}>Over Services</Text>
+      </View>
+      <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} SEO</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Technology')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Technology
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Quality')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Quality Statement
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>
+          {'> '} Testimonials
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
+        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} Projects</Text>
+      </TouchableOpacity>
+
+      <View style={styles.searchBox}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Enter keywords..."
+            style={styles.input}
+            value={tempQuery}
+            onChangeText={setTempQuery}
           />
-          {/* Add a close button for the WebView */}
-          <TouchableOpacity onPress={closeWebView} style={styles.closeButton}>
-            <Text style={styles.closeButtonText}>Close</Text>
+          {tempQuery.length > 0 && (
+            <TouchableOpacity onPress={clearSearch} style={styles.clearIcon}>
+              <MaterialCommunityIcons
+                name="close-circle"
+                size={20}
+                color="#444"
+              />
+            </TouchableOpacity>
+          )}
+        </View>
+        <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
+          <Text style={styles.searchButtonText}>Search</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.footerBottom}>
+        <View style={styles.iconsContainer}>
+          <TouchableOpacity
+            onPress={() => openSocialMedia('https://trztechnologies.com/#')}>
+            <MaterialCommunityIcons
+              name="twitter"
+              size={30}
+              color="#fff"
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              openSocialMedia('https://facebook.com/trztechnologies')
+            }>
+            <MaterialCommunityIcons
+              name="facebook"
+              size={30}
+              color="#fff"
+              style={styles.icon}
+            />
           </TouchableOpacity>
         </View>
-      )}
-      {!showWebView && (
-        <>
-          <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
-            <Text style={styles.text}>⋮⋮⋮⋮</Text>
-            <Text style={styles.text}>TRZ Technologies</Text>
-          </View>
-          {/* Navigation buttons */}
-          <TouchableOpacity onPress={() => navigation.navigate('About')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} About Us</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>
-              {'> '} Contact Us
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} Projects</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>
-              {'> '} Testimonials
-            </Text>
-          </TouchableOpacity>
-          <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
-            <Text style={styles.text}>⋮⋮⋮⋮</Text>
-            <Text style={styles.text}>Over Services</Text>
-          </View>
-          <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} SEO</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Technology')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>
-              {'> '} Technology
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Quality')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>
-              {'> '} Quality Statement
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>
-              {'> '} Testimonials
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
-            <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} Projects</Text>
-          </TouchableOpacity>
-
-          {/* Search Box */}
-          <Text style={[styles.txt, {marginTop: 10, paddingLeft: 160}]}>
-            Search for :
-          </Text>
-          <View style={styles.searchBox}>
-            <TextInput
-              placeholder="Enter keywords..."
-              style={styles.input}
-              value={searchQuery}
-              onChangeText={handleSearch} // Call handleSearch on text change
-            />
-            <TouchableOpacity style={styles.searchButton}>
-              <Text style={styles.searchButtonText}>Search</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.footerBottom}>
-            <View style={styles.iconsContainer}>
-              <TouchableOpacity
-                onPress={() => openSocialMedia('https://trztechnologies.com/#')}>
-                <MaterialCommunityIcons
-                  name="twitter"
-                  size={30}
-                  color="#fff"
-                  style={styles.icon}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() =>
-                  openSocialMedia('https://facebook.com/trztechnologies')
-                }>
-                <MaterialCommunityIcons
-                  name="facebook"
-                  size={30}
-                  color="#fff"
-                  style={styles.icon}
-                />
-              </TouchableOpacity>
-            </View>
-            {/* Updated copyright to open in WebView */}
-            <TouchableOpacity onPress={handleCopyrightClick}>
-              <Text style={styles.copyright}>© 2024 TRZ Technologies</Text>
-            </TouchableOpacity>
-          </View>
-        </>
-      )}
+        <TouchableOpacity onPress={handlclickcopyright}>
+          <Text style={styles.copyright}>© 2024 TRZ Technologies</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -212,15 +178,25 @@ const styles = StyleSheet.create({
   searchBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
     justifyContent: 'center',
+    width: '100%',
     paddingTop: 10,
+  },
+  inputContainer: {
+    position: 'relative',
+    width: '60%',
   },
   input: {
     backgroundColor: '#fff',
     padding: 8,
     borderRadius: 5,
-    width: '60%',
+    paddingRight: 35, // Space for the clear icon
+  },
+  clearIcon: {
+    position: 'absolute',
+    right: 10,
+    top: '50%',
+    transform: [{ translateY: -10 }], // Center the icon vertically
   },
   searchButton: {
     backgroundColor: '#444',
@@ -275,16 +251,5 @@ const styles = StyleSheet.create({
   highlightedText: {
     backgroundColor: 'yellow',
     fontWeight: 'bold',
-  },
-  closeButton: {
-    backgroundColor: '#444',
-    padding: 10,
-    borderRadius: 5,
-    position: 'absolute',
-    top: 10,
-    right: 10,
-  },
-  closeButtonText: {
-    color: '#fff',
   },
 });
