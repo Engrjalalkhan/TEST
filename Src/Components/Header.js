@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 50,
     resizeMode: 'contain',
-    right:150
+    right:150,
   },
   menuButton: {
     padding: 10,
