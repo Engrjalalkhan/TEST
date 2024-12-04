@@ -1,13 +1,13 @@
-/* eslint-disable react-native/no-inline-styles */
-import { View } from 'react-native';
 import React from 'react';
-import MainStack from './Src/navigation/MainStack';
+// import { NavigationContainer } from '@react-navigation/native';
+import { SearchProvider } from './Src/Components/SearchContext'; // Import the SearchContext
+import MainStack from './Src/navigation/MainStack'; // Your app's navigator
 
 const App = () => {
   return (
-    <View style={{flex:1}}>
-      <MainStack/>
-    </View>
+    <SearchProvider>
+        <MainStack />
+    </SearchProvider>
   );
 };
 

@@ -5,39 +5,59 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import ContactForm from '../Components/Form';
 import ContactInformation from '../Components/Contactinfo';
+import {useSearch} from '../Components/SearchContext';
 
 const Contact = () => {
+  const {searchQuery, filteredData} = useSearch();
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Header />
-        <View style={styles.ContactSection}>
-          <View style={{flexDirection: 'row'}}>
-            <Image
-              source={require('../assets/icons/paper.jpg')}
-              style={styles.icon}
-            />
-            <Text style={styles.ContactTitle}>Contact Us</Text>
-          </View>
+        {!searchQuery || !filteredData ? (
+          <>
+            <View style={styles.ContactSection}>
+              <View style={{flexDirection: 'row'}}>
+                <Image
+                  source={require('../assets/icons/paper.jpg')}
+                  style={styles.icon}
+                />
+                <Text style={styles.ContactTitle}>Contact Us</Text>
+              </View>
 
-          <Text style={[styles.ContactText, {fontSize: 20}]}>
-            Let’s Get in Touch
-          </Text>
-          <Text style={styles.ContactText}>
-            If you are interested in speaking with TRZ Technologies about an
-            upcoming project, have a query about our services or even if you
-            just want to say Hi, there are a number of ways we can make that
-            happen. Filling out the form below would help us get the right
-            person in touch with you, or you could simply send us an email. It’s
-            totally your choice!
-          </Text>
-          <Text style={styles.ContactText}>
-            Feel free to get in touch with us and we will be back in contact
-            with you shortly.
-          </Text>
-          <ContactForm />
-          <ContactInformation />
-        </View>
+              <Text style={[styles.ContactText, {fontSize: 20}]}>
+                Let’s Get in Touch
+              </Text>
+              <Text style={styles.ContactText}>
+                If you are interested in speaking with TRZ Technologies about an
+                upcoming project, have a query about our services or even if you
+                just want to say Hi, there are a number of ways we can make that
+                happen. Filling out the form below would help us get the right
+                person in touch with you, or you could simply send us an email.
+                It’s totally your choice!
+              </Text>
+              <Text style={styles.ContactText}>
+                Feel free to get in touch with us and we will be back in contact
+                with you shortly.
+              </Text>
+              <ContactForm />
+              <ContactInformation />
+            </View>
+          </>
+        ) : (
+          // If there is filtered data, show it instead of default content
+          <View style={styles.filteredContent}>
+            {filteredData.map((item, index) => (
+              <View key={index}>
+                <Text style={styles.filterTitle}>{item.title}</Text>
+                {item.description.map((para, paraIndex) => (
+                  <Text key={paraIndex} style={styles.filterText}>
+                    {para}
+                  </Text>
+                ))}
+              </View>
+            ))}
+          </View>
+        )}
         <Footer />
       </ScrollView>
     </View>
@@ -57,7 +77,7 @@ const styles = StyleSheet.create({
   },
   ContactSection: {
     padding: 30,
-    bottom:80,
+    bottom: 80,
   },
   ContactTitle: {
     fontSize: 24,
@@ -73,5 +93,18 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     marginRight: 8,
+  },
+  filteredContent: {
+    marginBottom: 20,
+    padding: 30,
+    bottom: 70,
+  },
+  filterTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  filterText: {
+    fontSize: 16,
+    paddingTop: 10,
   },
 });
