@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#373A3D',
     width: '100%',
-    marginTop:20,
+    marginTop: 20,
   },
   text: {
     color: 'white',
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
     top: '50%',
-    transform: [{ translateY: -10 }], // Center the icon vertically
+    transform: [{translateY: -10}], // Center the icon vertically
   },
   searchButton: {
     backgroundColor: '#444',

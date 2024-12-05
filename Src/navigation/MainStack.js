@@ -1,11 +1,15 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Animated, { useSharedValue, withSpring, useAnimatedStyle } from 'react-native-reanimated';
+import Animated, {
+  useSharedValue,
+  withSpring,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 
 import Homescreen from '../screens/Homescreen';
 import About from '../screens/About';
@@ -19,15 +23,15 @@ import Projects from '../screens/Projects';
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
-const AnimatedTabIcon = ({ name, color, focused }) => {
+const AnimatedTabIcon = ({name, color, focused}) => {
   const translateY = useSharedValue(focused ? -5 : 0); // Subtle upward movement
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: withSpring(translateY.value) }],
+    transform: [{translateY: withSpring(translateY.value)}],
   }));
 
   return (
-    <Animated.View style={[animatedStyle, { paddingBottom: focused ? 2 : 0 }]}>
+    <Animated.View style={[animatedStyle, {paddingBottom: focused ? 2 : 0}]}>
       <MaterialCommunityIcons name={name} color={color} size={28} />
     </Animated.View>
   );
@@ -35,7 +39,7 @@ const AnimatedTabIcon = ({ name, color, focused }) => {
 
 const BottomTabs = () => (
   <Tab.Navigator
-    screenOptions={({ route }) => ({
+    screenOptions={({route}) => ({
       tabBarActiveTintColor: '#0041c2',
       tabBarInactiveTintColor: '#bbb',
       tabBarStyle: {
@@ -44,7 +48,7 @@ const BottomTabs = () => (
         paddingBottom: 5,
       },
       headerShown: false,
-      tabBarIcon: ({ color, focused }) => {
+      tabBarIcon: ({color, focused}) => {
         let iconName;
 
         switch (route.name) {
@@ -62,14 +66,15 @@ const BottomTabs = () => (
             break;
         }
 
-        return <AnimatedTabIcon name={iconName} color={color} focused={focused} />;
+        return (
+          <AnimatedTabIcon name={iconName} color={color} focused={focused} />
+        );
       },
       tabBarLabelStyle: {
         fontSize: 12,
         paddingBottom: 5,
       },
-    })}
-  >
+    })}>
     <Tab.Screen name="Home" component={Homescreen} />
     <Tab.Screen name="About" component={About} />
     <Tab.Screen name="Technology" component={Technology} />
@@ -78,7 +83,7 @@ const BottomTabs = () => (
 );
 
 const AppNavigator = () => {
-  const getDrawerActiveColor = (routeName) => {
+  const getDrawerActiveColor = routeName => {
     switch (routeName) {
       case 'Dashboard':
         return '#0041c2';
@@ -98,22 +103,25 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        screenOptions={({ route }) => ({
+        screenOptions={({route}) => ({
           headerShown: false,
           drawerActiveTintColor: getDrawerActiveColor(route.name), // Dynamic active color based on screen
           drawerInactiveTintColor: '#555',
           drawerStyle: {
             backgroundColor: '#f8f8f8',
           },
-        })}
-      >
+        })}>
         <Drawer.Screen
           name="Dashboard"
           component={BottomTabs}
           options={{
             drawerLabel: 'Dashboard',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="view-dashboard-outline" color={color} size={size} />
+            drawerIcon: ({color, size}) => (
+              <MaterialCommunityIcons
+                name="view-dashboard-outline"
+                color={color}
+                size={size}
+              />
             ),
           }}
         />
@@ -122,8 +130,12 @@ const AppNavigator = () => {
           component={SEO}
           options={{
             drawerLabel: 'SEO',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="magnify" color={color} size={size} />
+            drawerIcon: ({color, size}) => (
+              <MaterialCommunityIcons
+                name="magnify"
+                color={color}
+                size={size}
+              />
             ),
           }}
         />
@@ -132,8 +144,12 @@ const AppNavigator = () => {
           component={Projects}
           options={{
             drawerLabel: 'Projects',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="folder-outline" color={color} size={size} />
+            drawerIcon: ({color, size}) => (
+              <MaterialCommunityIcons
+                name="folder-outline"
+                color={color}
+                size={size}
+              />
             ),
           }}
         />
@@ -142,8 +158,12 @@ const AppNavigator = () => {
           component={Testimonials}
           options={{
             drawerLabel: 'Testimonials',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="message-outline" color={color} size={size} />
+            drawerIcon: ({color, size}) => (
+              <MaterialCommunityIcons
+                name="message-outline"
+                color={color}
+                size={size}
+              />
             ),
           }}
         />
@@ -152,8 +172,12 @@ const AppNavigator = () => {
           component={Contact}
           options={{
             drawerLabel: 'Contact Us',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="phone-outline" color={color} size={size} />
+            drawerIcon: ({color, size}) => (
+              <MaterialCommunityIcons
+                name="phone-outline"
+                color={color}
+                size={size}
+              />
             ),
           }}
         />

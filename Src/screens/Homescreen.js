@@ -1,9 +1,12 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Image,
+  requireNativeComponent,
 } from 'react-native';
 import React from 'react';
 import Header from '../Components/Header';
@@ -11,6 +14,7 @@ import Swapimage from '../Components/Swapimage';
 import Footer from '../Components/Footer';
 import {useSearch} from '../Components/SearchContext';
 import {useNavigation} from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Homescreen = () => {
   const {searchQuery, filteredData} = useSearch();
@@ -74,7 +78,27 @@ const Homescreen = () => {
           <View style={styles.filteredContent}>
             {filteredData.map((item, index) => (
               <View key={index}>
-                <Text style={styles.filterTitle}>{item.title}</Text>
+                <View style={{flexDirection: 'row', margin: 20, right: 15}}>
+                  <MaterialCommunityIcons
+                    name={'magnify'}
+                    color={'black'}
+                    size={30}
+                    style={{paddingTop: 5}}
+                  />
+                  <Text style={[styles.filterTitle, {fontSize: 24}]}>
+                    Search results for: {item.title}
+                  </Text>
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                  <Image
+                    source={require('../assets/icons/paper.jpg')}
+                    style={{width: 50, height: 50}}
+                  />
+                  <Text style={[styles.filterTitle, {paddingTop: 10}]}>
+                    {item.title}
+                  </Text>
+                </View>
+
                 {item.description.map((para, paraIndex) => (
                   <Text key={paraIndex} style={styles.filterText}>
                     {para}
