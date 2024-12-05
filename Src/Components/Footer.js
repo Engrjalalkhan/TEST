@@ -199,7 +199,6 @@ const styles = StyleSheet.create({
     right: 10,
   },
   searchBox: {
-    flex:1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

@@ -123,7 +123,13 @@ const Testimonials = () => {
           <View style={styles.filteredContent}>
             {filteredData.map((item, index) => (
               <View key={index}>
-                <View style={{flexDirection: 'row', margin: 20, right: 15}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    margin: 20,
+                    paddingTop: 20,
+                    right: 15,
+                  }}>
                   <MaterialCommunityIcons
                     name={'magnify'}
                     color={'black'}
