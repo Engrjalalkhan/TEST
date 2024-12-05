@@ -18,7 +18,6 @@ const Footer = () => {
   const [tempQuery, setTempQuery] = useState(''); // Hold input value temporarily
 
   // Function to handle filtering when button is clicked
-  // Function to handle filtering when button is clicked
   const handleSearch = () => {
     setSearchQuery(tempQuery);
     if (tempQuery) {
@@ -181,7 +180,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    paddingTop: 10,
+    paddingTop: 30,
+    Bottom:20,
   },
   inputContainer: {
     position: 'relative',
