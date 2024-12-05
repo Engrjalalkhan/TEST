@@ -18,7 +18,11 @@ export const contentData = [
   },
   {
     title: 'Projects',
-    description: [''],
+    description: ['Repair and Maintenance System',
+      '- Social Media Platform',
+      '- Mini ERP',
+      '- Social Media Banners',
+    ],
   },
   {
     title: 'Testimonials',
