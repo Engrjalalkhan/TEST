@@ -43,9 +43,12 @@ const BottomTabs = () => (
       tabBarActiveTintColor: '#0041c2',
       tabBarInactiveTintColor: '#bbb',
       tabBarStyle: {
-        backgroundColor: '#f0f0f0',
+        backgroundColor: 'white',
+        borderTopWidth:1,
+        borderTopColor:'black',
         height: 60,
         paddingBottom: 5,
+        paddingTop:5,
       },
       headerShown: false,
       tabBarIcon: ({color, focused}) => {

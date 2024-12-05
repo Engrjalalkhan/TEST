@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-native/no-inline-styles */
 import { useNavigation } from '@react-navigation/native';
 import { useSearch } from './SearchContext'; // Import the useSearch hook
 import { contentData } from './content';
@@ -190,13 +192,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   txt: {
-    fontSize: 18,
+    fontSize: 16,
     color: 'white',
     paddingTop: 10,
     textAlign: 'justify',
     right: 10,
   },
   searchBox: {
+    flex:1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
