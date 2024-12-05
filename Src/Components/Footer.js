@@ -1,6 +1,6 @@
-import {useNavigation} from '@react-navigation/native';
-import {useSearch} from './SearchContext'; // Import the useSearch hook
-import {contentData} from './content';
+import { useNavigation } from '@react-navigation/native';
+import { useSearch } from './SearchContext'; // Import the useSearch hook
+import { contentData } from './content';
 import {
   StyleSheet,
   Text,
@@ -8,25 +8,28 @@ import {
   View,
   TextInput,
   Linking,
+  BackHandler,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Footer = () => {
   const navigation = useNavigation();
-  const {searchQuery, setSearchQuery, setFilteredData} = useSearch();
-  const [tempQuery, setTempQuery] = useState(''); // Hold input value temporarily
+  const { searchQuery, setSearchQuery, setFilteredData } = useSearch();
+  const [tempQuery, setTempQuery] = useState('');
+  const [inAppMode, setInAppMode] = useState(false); // Track if user is in app mode
+  const [backPressCount, setBackPressCount] = useState(0); // Track back button presses
 
   // Function to handle filtering when button is clicked
   const handleSearch = () => {
     setSearchQuery(tempQuery);
     if (tempQuery) {
       const filtered = contentData.filter(
-        item =>
+        (item) =>
           item.title.toLowerCase().includes(tempQuery.toLowerCase()) ||
-          item.description.some(para =>
-            para.toLowerCase().includes(tempQuery.toLowerCase()),
-          ),
+          item.description.some((para) =>
+            para.toLowerCase().includes(tempQuery.toLowerCase())
+          )
       );
       setFilteredData(filtered.length > 0 ? filtered : null);
     } else {
@@ -40,61 +43,97 @@ const Footer = () => {
     setFilteredData(null);
   };
 
-  const openSocialMedia = url => {
+  const openSocialMedia = (url) => {
     Linking.openURL(url);
   };
+
   // Function to handle clicking on the copyright text
-  const handlclickcopyright = () => {
-    navigation.navigate('Home'); // Navigate to a specific screen
+  const handleClickCopyright = () => {
+    setInAppMode(true); // Set the app to in-app mode
+    setBackPressCount(0); // Reset back press count to prevent immediate close
+    // Navigate to Home to simulate a refresh
+    navigation.navigate('Home');
   };
+
+  // Handle back button press behavior
+  useEffect(() => {
+    if (inAppMode) {
+      const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+        if (backPressCount === 0) {
+          setBackPressCount(1); // Increment the count on first press
+          // Simulate a refresh by navigating to the Home screen
+          navigation.navigate('Home');
+          return true; // Prevent the default behavior (app close)
+        } else if (backPressCount === 1) {
+          // On second back press, allow the app to close
+          setInAppMode(false); // Exit in-app mode
+          setBackPressCount(0); // Reset back press count
+          return false; // Allow the app to close
+        }
+        return false; // Default behavior
+      });
+
+      // Cleanup on unmount
+      return () => backHandler.remove();
+    }
+  }, [inAppMode, backPressCount, navigation]);
 
   return (
     <View style={styles.container}>
-      <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
+      <View style={{ flexDirection: 'row', alignSelf: 'flex-start' }}>
         <Text style={styles.text}>⋮⋮⋮⋮</Text>
         <Text style={styles.text}>TRZ Technologies</Text>
       </View>
+
       {/* Navigation buttons */}
       <TouchableOpacity onPress={() => navigation.navigate('About')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} About Us</Text>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
+          {'> '} About Us
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
           {'> '} Contact Us
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} Projects</Text>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
+          {'> '} Projects
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
           {'> '} Testimonials
         </Text>
       </TouchableOpacity>
-      <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
+      <View style={{ flexDirection: 'row', alignSelf: 'flex-start' }}>
         <Text style={styles.text}>⋮⋮⋮⋮</Text>
         <Text style={styles.text}>Over Services</Text>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('SEO')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} SEO</Text>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
+          {'> '} SEO
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Technology')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
           {'> '} Technology
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Quality')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
           {'> '} Quality Statement
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Testimonials')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
           {'> '} Testimonials
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Projects')}>
-        <Text style={[styles.txt, {textAlign: 'center'}]}>{'> '} Projects</Text>
+        <Text style={[styles.txt, { textAlign: 'center' }]}>
+          {'> '} Projects
+        </Text>
       </TouchableOpacity>
 
       <View style={styles.searchBox}>
@@ -107,11 +146,7 @@ const Footer = () => {
           />
           {tempQuery.length > 0 && (
             <TouchableOpacity onPress={clearSearch} style={styles.clearIcon}>
-              <MaterialCommunityIcons
-                name="close-circle"
-                size={20}
-                color="#444"
-              />
+              <MaterialCommunityIcons name="close-circle" size={20} color="#444" />
             </TouchableOpacity>
           )}
         </View>
@@ -122,28 +157,14 @@ const Footer = () => {
 
       <View style={styles.footerBottom}>
         <View style={styles.iconsContainer}>
-          <TouchableOpacity
-            onPress={() => openSocialMedia('https://trztechnologies.com/#')}>
-            <MaterialCommunityIcons
-              name="twitter"
-              size={30}
-              color="#fff"
-              style={styles.icon}
-            />
+          <TouchableOpacity onPress={() => openSocialMedia('https://trztechnologies.com/#')}>
+            <MaterialCommunityIcons name="twitter" size={30} color="#fff" style={styles.icon} />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() =>
-              openSocialMedia('https://facebook.com/trztechnologies')
-            }>
-            <MaterialCommunityIcons
-              name="facebook"
-              size={30}
-              color="#fff"
-              style={styles.icon}
-            />
+          <TouchableOpacity onPress={() => openSocialMedia('https://facebook.com/trztechnologies')}>
+            <MaterialCommunityIcons name="facebook" size={30} color="#fff" style={styles.icon} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={handlclickcopyright}>
+        <TouchableOpacity onPress={handleClickCopyright}>
           <Text style={styles.copyright}>© 2024 TRZ Technologies</Text>
         </TouchableOpacity>
       </View>
@@ -180,8 +201,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    paddingTop: 30,
-    Bottom:20,
+    paddingTop: 10,
   },
   inputContainer: {
     position: 'relative',
@@ -197,7 +217,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
     top: '50%',
-    transform: [{translateY: -10}], // Center the icon vertically
+    transform: [{ translateY: -10 }],
   },
   searchButton: {
     backgroundColor: '#444',
@@ -230,27 +250,5 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginHorizontal: 15,
-  },
-  filteredContent: {
-    padding: 20,
-    bottom: 50,
-    backgroundColor: 'white',
-  },
-  filteredItem: {
-    marginBottom: 10,
-  },
-  filteredItemTitle: {
-    fontSize: 24,
-    color: 'black',
-    fontWeight: 'bold',
-  },
-  filteredItemDescription: {
-    fontSize: 16,
-    color: 'black',
-    padding: 10,
-  },
-  highlightedText: {
-    backgroundColor: 'yellow',
-    fontWeight: 'bold',
   },
 });
