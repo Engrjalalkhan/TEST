@@ -1,16 +1,21 @@
+/* eslint-disable no-unused-vars */
 import React, {useEffect} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Animated, {useSharedValue, useAnimatedStyle, withTiming} from 'react-native-reanimated';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 
 const Splash = () => {
   const navigation = useNavigation();
-  const scale = useSharedValue(0.5); 
+  const scale = useSharedValue(0.5);
   // Trigger animation and navigation
   useEffect(() => {
-    scale.value = withTiming(1, {duration: 3000}); 
+    scale.value = withTiming(1, {duration: 3000});
     const timeout = setTimeout(() => {
-      navigation.replace('DrawarNavigator'); // Replace with your target screen name
+      navigation.replace('SignUp'); // Replace with your target screen name
     }, 3000);
 
     return () => clearTimeout(timeout);

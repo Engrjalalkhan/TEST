@@ -10,6 +10,8 @@ import AboutUs from '../screens/StackScreens/AboutUs';
 import Technologys from '../screens/StackScreens/Technologys';
 import QualityStatment from '../screens/StackScreens/QualityStatment';
 import Splash from '../screens/auth/Splash';
+import SignUpScreen from '../screens/auth/SignUpScreen';
+import SignInScreen from '../screens/auth/SignInScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +20,8 @@ const StackNavigator = () => (
     initialRouteName="Splash"
     screenOptions={{headerShown: false}}>
     <Stack.Screen name="Splash" component={Splash}/>
+    <Stack.Screen name="SignIn" component={SignInScreen}/>
+    <Stack.Screen name="SignUp" component={SignUpScreen}/>
     <Stack.Screen name="SEO" component={SEO} />
     <Stack.Screen name="AboutUs" component={AboutUs} />
     <Stack.Screen name="Technologys" component={Technologys} />
