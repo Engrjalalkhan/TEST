@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomTabs from './BottomTabNavigation';
 import StackNavigator from './StackNavigation';
@@ -9,7 +9,7 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => (
   <Drawer.Navigator
-    screenOptions={({route}) => ({
+    screenOptions={({ route }) => ({
       headerShown: false,
       drawerActiveTintColor: '#0041c2',
       drawerInactiveTintColor: '#555',
@@ -22,9 +22,23 @@ const DrawerNavigator = () => (
       component={BottomTabs} // Only the BottomTabs are included in the Drawer
       options={{
         drawerLabel: 'Dashboard',
-        drawerIcon: ({color, size}) => (
+        drawerIcon: ({ color, size }) => (
           <MaterialCommunityIcons
             name="view-dashboard-outline"
+            color={color}
+            size={size}
+          />
+        ),
+      }}
+    />
+    <Drawer.Screen
+      name="StackScreens"
+      component={StackNavigator} // StackNavigator to handle stack-based screens
+      options={{
+        drawerLabel: 'Other Screens',
+        drawerIcon: ({ color, size }) => (
+          <MaterialCommunityIcons
+            name="folder-outline"
             color={color}
             size={size}
           />
