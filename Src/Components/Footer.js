@@ -88,7 +88,7 @@ const Footer = () => {
       </View>
 
       {/* Navigation buttons */}
-      <TouchableOpacity onPress={() => navigation.navigate('About')}>
+      <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
         <Text style={[styles.txt, { textAlign: 'center' }]}>
           {'> '} About Us
         </Text>
@@ -117,12 +117,12 @@ const Footer = () => {
           {'> '} SEO
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Technology')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Technologys')}>
         <Text style={[styles.txt, { textAlign: 'center' }]}>
           {'> '} Technology
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Quality')}>
+      <TouchableOpacity onPress={() => navigation.navigate('QualityStatment')}>
         <Text style={[styles.txt, { textAlign: 'center' }]}>
           {'> '} Quality Statement
         </Text>

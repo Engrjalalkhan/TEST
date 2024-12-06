@@ -1,12 +1,14 @@
 import React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import {SearchProvider} from './Src/Components/SearchContext'; // Import the SearchContext
-import MainStack from './Src/navigation/MainStack'; // Your app's navigator
+import StackNavigator from './Src/navigation/StackNavigation';
 
 const App = () => {
   return (
     <SearchProvider>
-      <MainStack />
+      <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
     </SearchProvider>
   );
 };
