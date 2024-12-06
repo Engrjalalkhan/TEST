@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Homescreen from '../screens/Homescreen';
 import About from '../screens/About';
@@ -14,15 +14,15 @@ import Animated, {
 
 const Tab = createBottomTabNavigator();
 
-const AnimatedTabIcon = ({ name, color, focused }) => {
+const AnimatedTabIcon = ({name, color, focused}) => {
   const translateY = useSharedValue(focused ? -5 : 0);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: withSpring(translateY.value) }],
+    transform: [{translateY: withSpring(translateY.value)}],
   }));
 
   return (
-    <Animated.View style={[animatedStyle, { paddingBottom: focused ? 2 : 0 }]}>
+    <Animated.View style={[animatedStyle, {paddingBottom: focused ? 2 : 0}]}>
       <MaterialCommunityIcons name={name} color={color} size={28} />
     </Animated.View>
   );
@@ -30,7 +30,7 @@ const AnimatedTabIcon = ({ name, color, focused }) => {
 
 const BottomTabs = () => (
   <Tab.Navigator
-    screenOptions={({ route }) => ({
+    screenOptions={({route}) => ({
       tabBarActiveTintColor: '#0041c2',
       tabBarInactiveTintColor: '#bbb',
       tabBarStyle: {
@@ -42,7 +42,7 @@ const BottomTabs = () => (
         paddingTop: 5,
       },
       headerShown: false,
-      tabBarIcon: ({ color, focused }) => {
+      tabBarIcon: ({color, focused}) => {
         let iconName;
 
         switch (route.name) {

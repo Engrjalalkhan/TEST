@@ -46,7 +46,13 @@ const About = () => {
           <View style={styles.filteredContent}>
             {filteredData.map((item, index) => (
               <View key={index}>
-                <View style={{flexDirection: 'row', margin: 20, right: 15,paddingTop: 20,}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    margin: 20,
+                    right: 15,
+                    paddingTop: 20,
+                  }}>
                   <MaterialCommunityIcons
                     name={'magnify'}
                     color={'black'}
