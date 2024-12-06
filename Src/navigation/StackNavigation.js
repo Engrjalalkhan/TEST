@@ -9,13 +9,15 @@ import BottomTabs from './BottomTabNavigation';
 import AboutUs from '../screens/StackScreens/AboutUs';
 import Technologys from '../screens/StackScreens/Technologys';
 import QualityStatment from '../screens/StackScreens/QualityStatment';
+import Splash from '../screens/auth/Splash';
 
 const Stack = createStackNavigator();
 
 const StackNavigator = () => (
   <Stack.Navigator
-    initialRouteName="DrawarNavigator"
+    initialRouteName="Splash"
     screenOptions={{headerShown: false}}>
+    <Stack.Screen name="Splash" component={Splash}/>
     <Stack.Screen name="SEO" component={SEO} />
     <Stack.Screen name="AboutUs" component={AboutUs} />
     <Stack.Screen name="Technologys" component={Technologys} />
