@@ -34,7 +34,7 @@ const About = () => {
                     name="arrow-left"
                     size={35}
                     color="#444"
-                    style={{paddingTop: 10}}
+                    style={{paddingTop: 10,right:30}}
                   />
                 </TouchableOpacity>
 

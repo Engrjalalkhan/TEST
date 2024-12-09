@@ -34,7 +34,7 @@ const Projects = () => {
                     name="arrow-left"
                     size={35}
                     color="#444"
-                    style={{paddingTop: 10}}
+                    style={{paddingTop: 10,right:40}}
                   />
                 </TouchableOpacity>
                 <Image
