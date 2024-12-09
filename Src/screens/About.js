@@ -12,6 +12,8 @@ const About = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {/* Header is now responsible for closing the menu when clicked outside */}
+        <Header />
         {!searchQuery || !filteredData ? (
           <>
             <View style={styles.aboutUsSection}>
