@@ -11,7 +11,6 @@ const Technology = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Header />
         {!searchQuery || !filteredData ? (
           <>
             <View style={styles.TechnologySection}>

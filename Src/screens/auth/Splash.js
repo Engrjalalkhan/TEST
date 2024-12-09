@@ -15,7 +15,7 @@ const Splash = () => {
   useEffect(() => {
     scale.value = withTiming(1, {duration: 3000});
     const timeout = setTimeout(() => {
-      navigation.replace('SignUp'); // Replace with your target screen name
+      navigation.replace('DrawarNavigator'); // Replace with your target screen name
     }, 3000);
 
     return () => clearTimeout(timeout);

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView,TouchableOpacity} from 'react-native';
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -7,17 +7,30 @@ import ContactForm from '../Components/Form';
 import ContactInformation from '../Components/Contactinfo';
 import {useSearch} from '../Components/SearchContext';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const Contact = () => {
   const {searchQuery, filteredData} = useSearch();
+  const navigation = useNavigation();
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate to the previous screen
+  };
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Header />
         {!searchQuery || !filteredData ? (
           <>
             <View style={styles.ContactSection}>
               <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity onPress={handleGoBack}>
+                  <MaterialCommunityIcons
+                    name="arrow-left"
+                    size={35}
+                    color="#444"
+                    style={{paddingTop: 10}}
+                  />
+                </TouchableOpacity>
                 <Image
                   source={require('../assets/icons/paper.jpg')}
                   style={styles.icon}

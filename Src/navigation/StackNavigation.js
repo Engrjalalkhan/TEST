@@ -22,7 +22,7 @@ const StackNavigator = () => (
     <Stack.Screen name="Splash" component={Splash}/>
     <Stack.Screen name="SignIn" component={SignInScreen}/>
     <Stack.Screen name="SignUp" component={SignUpScreen}/>
-    <Stack.Screen name="SEO" component={SEO} />
+    <Stack.Screen name="SEO" component={SEO}  />
     <Stack.Screen name="AboutUs" component={AboutUs} />
     <Stack.Screen name="Technologys" component={Technologys} />
     <Stack.Screen name="QualityStatment" component={QualityStatment} />
